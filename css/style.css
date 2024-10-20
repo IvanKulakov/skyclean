@@ -192,13 +192,13 @@
 }
 .price_item_first{
     background: #659AFF61;
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     padding: 16px 34px;
+    overflow: hidden;
 
 }
 .price_item_first_svg{
@@ -228,9 +228,9 @@
     justify-content: space-between;
     align-items: center;
     background: #36677C;
-    width: 100%;
     padding: 30px 34px;
     margin-bottom: 20px;
+    overflow: hidden;
 }
 .price_item_text{
     font-size: 20px;

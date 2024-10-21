@@ -9,7 +9,7 @@
     margin: 0 auto;
 }
 .header_background{
-    background: url("/img/charlie-egan-qOR762W7OvA-unsplash.jpg") no-repeat center, linear-gradient(72.44deg, rgba(0, 21, 95, 0.25) 13.76%, rgba(255, 255, 255, 0) 100%);
+    background: url("../img/charlie-egan-qOR762W7OvA-unsplash.jpg") no-repeat center, linear-gradient(72.44deg, rgba(0, 21, 95, 0.25) 13.76%, rgba(255, 255, 255, 0) 100%);
     background-size: cover;
     padding-top: 40px;
     padding-bottom: 270px;
@@ -152,7 +152,7 @@
 
 .services_background{
     background-blend-mode: multiply;
-    background: url("/img/Titelbild_Glas_putzen.jpg") no-repeat center, linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background: url("../img/Titelbild_Glas_putzen.jpg") no-repeat center, linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     backdrop-filter: blur(10px);
     background-size: cover;
     padding-top: 100px;
@@ -277,6 +277,9 @@
 ;
 
 }
+.price_item_block{
+    margin-bottom: 20px;
+}
 .price_item{
     display: flex;
     flex-direction: row;
@@ -284,7 +287,6 @@
     align-items: center;
     background: #36677C;
     padding: 30px 34px;
-    margin-bottom: 20px;
     overflow: hidden;
 }
 .price_item_text{
@@ -293,12 +295,41 @@
     line-height: 29px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
-;
 }
+.price_item_text_open{
+    color: #000000;
+    padding-left: 130px;
+    width: 50%;
+}
+.price_item_content_open{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid #9C9C9C;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+.price_svg_open{
+    width: 22px;
+    height: 19px;
+    transform: rotate(180deg);
+    transition: transform .5s;
+    transform-origin: center center;
+    cursor: pointer;
+}
+.price_svg_open_active{
+    transform: rotate(0deg);
+    transition: transform .5s;
+    transform-origin: center center;
+}
+.price_items_content_closed{
+    display: none;
+}
+
 
 .response_background{
     background-blend-mode: multiply;
-    background: url("/img/clay-banks.png") no-repeat center, linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background: url("../img/clay-banks.png") no-repeat center, linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     backdrop-filter: blur(10px);
     background-size: cover;
     padding-top: 100px;
@@ -387,11 +418,11 @@ display: flex;
 
 }
 .business_item_1{
-    background: url("/img/s1200.png") no-repeat right;
+    background: url("../img/s1200.png") no-repeat right;
     margin-bottom: 20px;
 }
 .business_item_2{
-    background: url("/img/himchistka-divana_large 1.png") no-repeat right;
+    background: url("../img/himchistka-divana_large 1.png") no-repeat right;
 }
 .business_items{
  width: 100%;
@@ -462,7 +493,7 @@ display: flex;
 }
 
 .form_background{
-    background: url("/img/footer.png") no-repeat center;
+    background: url("../img/footer.png") no-repeat center;
     background-size: cover;
     padding-top: 90px;
     padding-bottom: 90px;

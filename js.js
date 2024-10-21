@@ -181,3 +181,32 @@ try{
 catch (e) {
     console.log(e)
 }
+
+// price_items
+try{
+    const btnOpenPriceItems = document.getElementsByClassName('price_svg_open');
+    const priceContent = document.getElementsByClassName('price_items');
+    const idForItems = () =>{
+        for(let i = 0; i < btnOpenPriceItems.length; i++){
+            btnOpenPriceItems[i].id = 'btnOpenPriceItems' + i;
+            btnOpenPriceItems[i].addEventListener("click", setActive)
+        }
+        for(let i = 0; i < priceContent.length; i++){
+            priceContent[i].id = 'priceContent' + i;
+            priceContent[i].classList.add('price_items_content_closed');
+        }
+    }
+    const setActive = (e) => {
+        let numb = e.target.id.slice(-1)
+        priceContent[numb].classList.toggle('price_items_content_closed');
+        btnOpenPriceItems[numb].classList.toggle('price_svg_open_active')
+    }
+
+
+
+    idForItems();
+
+}
+catch (e) {
+    console.log(e)
+}

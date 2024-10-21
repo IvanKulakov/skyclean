@@ -126,7 +126,6 @@ try{
     }
     const stepLeft = () => {
         if(+isActive() === 0){
-            console.log('0')
             return false
         }
         else {
@@ -210,3 +209,112 @@ try{
 catch (e) {
     console.log(e)
 }
+
+// service items mob
+try{
+    const serviceItemsMob = document.getElementsByClassName('service_item_box_mob');
+    const btnLeft = document.getElementById('service_left_mob');
+    const btnRight = document.getElementById('service_right_mob');
+
+    const idForItems = () =>{
+        for(let i = 0; i < serviceItemsMob.length; i++){
+            serviceItemsMob[i].id = i;
+            serviceItemsMob[i].classList.add('response_text_invisible');
+            serviceItemsMob[0].classList.remove('response_text_invisible');
+        }
+    }
+    const isActive = () => {
+        for(let i = 0; i < serviceItemsMob.length; i++){
+            if(!serviceItemsMob[i].classList.contains('response_text_invisible')){
+                return Number(serviceItemsMob[i].id)
+            }
+        }
+    }
+    const stepLeft = () => {
+        if(+isActive() === 0){
+            return false
+        }
+        else {
+            let next = +isActive() - 1;
+            for (let i = 0; i < serviceItemsMob.length; i++){
+                serviceItemsMob[i].classList.add('response_text_invisible');
+                serviceItemsMob[next].classList.remove('response_text_invisible');
+            }
+        }
+    }
+    const stepRight = () =>{
+        let next = +isActive() + 1;
+        if(next === serviceItemsMob.length){
+            return false
+        }
+        else {
+            for (let i = 0; i < serviceItemsMob.length; i++){
+                serviceItemsMob[i].classList.add('response_text_invisible');
+                serviceItemsMob[next].classList.remove('response_text_invisible');
+            }
+        }
+    }
+
+    idForItems();
+    btnLeft.addEventListener("click", stepLeft)
+    btnRight.addEventListener("click", stepRight)
+
+
+}
+catch (e) {
+    console.log(e)
+}
+
+// business items mob
+try{
+    const businessItemsMob = document.getElementsByClassName('business_items_mob');
+    const btnBusinessLeft = document.getElementById('business_left_mob');
+    const btnBusnessRight = document.getElementById('business_right_mob');
+
+    const idForItems = () =>{
+        for(let i = 0; i < businessItemsMob.length; i++){
+            businessItemsMob[i].id ='businessItems' + i;
+            businessItemsMob[i].classList.add('response_text_invisible');
+            businessItemsMob[0].classList.remove('response_text_invisible');
+        }
+    }
+    const isActive = () => {
+        for(let i = 0; i < businessItemsMob.length; i++){
+            if(!businessItemsMob[i].classList.contains('response_text_invisible')){
+                return Number(businessItemsMob[i].id.slice(-1))
+            }
+        }
+    }
+    const stepLeft = () => {
+        if(+isActive() === 0){
+            return false
+        }
+        else {
+            let next = +isActive() - 1;
+            for (let i = 0; i < businessItemsMob.length; i++){
+                businessItemsMob[i].classList.add('response_text_invisible');
+                businessItemsMob[next].classList.remove('response_text_invisible');
+            }
+        }
+    }
+    const stepRight = () =>{
+        let next = +isActive() + 1;
+        if(next === businessItemsMob.length){
+            return false
+        }
+        else {
+            for (let i = 0; i < businessItemsMob.length; i++){
+                businessItemsMob[i].classList.add('response_text_invisible');
+                businessItemsMob[next].classList.remove('response_text_invisible');
+            }
+        }
+    }
+
+    idForItems();
+    btnBusinessLeft.addEventListener("click", stepLeft)
+    btnBusnessRight.addEventListener("click", stepRight)
+}
+catch (e) {
+    console.log(e)
+}
+

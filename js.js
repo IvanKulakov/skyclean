@@ -318,3 +318,224 @@ catch (e) {
     console.log(e)
 }
 
+
+// response items
+try {
+    const img1 = 'img/image%2011.png';
+    const img2 = 'img/image%209.png';
+    const img3 = 'img/image%2010.png';
+
+    const text1 = 'Хочу подякувати команді за чудову роботу! Миття вікон пройшло швидко і якісно, а фахівці були дуже ввічливими. Обов\'язково звернуся знову!'
+    const text2 = 'Доброго дня! Сподобалася якість роботи, ставлення до клієнта, хлопці працюють із технікою Karcher, засоби для прибирання були без запаху. Мийкою вікон залишилися дуже задоволені! Рекомендую!'
+    const text3 = 'Скористався послугами з прибирання, і залишився в захваті! Чистка килимів була на високому рівні, а хлопці дуже уважні. Обслуговування на вищому рівні. Рекомендую!'
+
+    const placeIm1 = document.getElementById('im1');
+    const placeIm2 = document.getElementById('im2');
+    const placeIm3 = document.getElementById('im3');
+    const placeText = document.getElementById('response_text')
+    const rightBtnResponse = document.getElementById('response_btn_right');
+    const leftBtnResponse = document.getElementById('response_btn_left');
+    const setImg = () =>{
+        placeIm1.setAttribute("src", img1);
+        placeIm2.setAttribute("src", img2);
+        placeIm3.setAttribute("src", img3);
+        placeText.innerText = text2;
+    }
+    setImg();
+    const stepRight = () => {
+       let data = placeIm1.getAttribute("src");
+        if (data === img1)
+        {
+            placeIm1.setAttribute("src", img3);
+            placeIm2.setAttribute("src", img1);
+            placeIm3.setAttribute("src", img2);
+            placeText.innerText = text1;
+        }
+        if (data === img2){
+            placeIm1.setAttribute("src", img1);
+            placeIm2.setAttribute("src", img2);
+            placeIm3.setAttribute("src", img3);
+            placeText.innerText = text2;
+        }
+        if (data === img3){
+            placeIm1.setAttribute("src", img2);
+            placeIm2.setAttribute("src", img3);
+            placeIm3.setAttribute("src", img1);
+            placeText.innerText = text3;
+        }
+    }
+    const stepLeft = () => {
+        let data = placeIm1.getAttribute("src");
+        if (data === img1)
+        {
+            placeIm1.setAttribute("src", img2);
+            placeIm2.setAttribute("src", img3);
+            placeIm3.setAttribute("src", img1);
+            placeText.innerText = text3;
+        }
+        if (data === img2){
+            placeIm1.setAttribute("src", img3);
+            placeIm2.setAttribute("src", img1);
+            placeIm3.setAttribute("src", img2);
+            placeText.innerText = text1;
+        }
+        if (data === img3){
+            placeIm1.setAttribute("src", img1);
+            placeIm2.setAttribute("src", img2);
+            placeIm3.setAttribute("src", img3);
+            placeText.innerText = text2;
+        }
+    }
+
+
+
+    rightBtnResponse.addEventListener("click", stepLeft);
+    leftBtnResponse.addEventListener("click", stepRight);
+
+}
+catch (e) {
+    console.log(e)
+}
+
+
+// response items mob
+try{
+    const responseItemsMob = document.getElementsByClassName('response_content_mob');
+    const btnResponseLeft = document.getElementById('response_btn_mob_left');
+    const btnResponseRight = document.getElementById('response_btn_mob_right');
+
+    const idForItems = () =>{
+        for(let i = 0; i < responseItemsMob.length; i++){
+            responseItemsMob[i].id ='responseItemsMob' + i;
+            responseItemsMob[i].classList.add('response_text_invisible');
+            responseItemsMob[0].classList.remove('response_text_invisible');
+        }
+    }
+    const isActive = () => {
+        for(let i = 0; i < responseItemsMob.length; i++){
+            if(!responseItemsMob[i].classList.contains('response_text_invisible')){
+                return Number(responseItemsMob[i].id.slice(-1))
+            }
+        }
+    }
+    const stepLeft = () => {
+        if(+isActive() === 0){
+            return false
+        }
+        else {
+            let next = +isActive() - 1;
+            for (let i = 0; i < responseItemsMob.length; i++){
+                responseItemsMob[i].classList.add('response_text_invisible');
+                responseItemsMob[next].classList.remove('response_text_invisible');
+            }
+        }
+    }
+    const stepRight = () =>{
+        let next = +isActive() + 1;
+        if(next === responseItemsMob.length){
+            return false
+        }
+        else {
+            for (let i = 0; i < responseItemsMob.length; i++){
+                responseItemsMob[i].classList.add('response_text_invisible');
+                responseItemsMob[next].classList.remove('response_text_invisible');
+            }
+        }
+    }
+
+    idForItems();
+    btnResponseLeft.addEventListener("click", stepLeft)
+    btnResponseRight.addEventListener("click", stepRight)
+
+}
+catch (e){
+    console.log(e)
+}
+
+//modal block start
+try {
+    const btnOpenModal = document.getElementById('openModal');
+    const btnOpenModalAbout = document.getElementById('btnOpenModalAbout')
+    const btnClosedModal = document.getElementById('close_icon');
+    const btnsubmit = document.getElementById('closedModal');
+    const modal = document.getElementById('modal');
+    const userNameInput = document.getElementById('userNameInput');
+    const userPhoneInput = document.getElementById('userPhoneInput');
+
+    const open = function (){
+        modal.classList.add('modal-active');
+        document.body.classList.add('main_hidden');
+    };
+    const closed = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        sendToTelegram('modal', userNameInput.value, userPhoneInput.value);
+        userNameInput.value = "";
+        userPhoneInput.value = "";
+        modal.classList.remove('modal-active');
+        document.body.classList.remove('main_hidden');
+    }
+    const exit = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        userNameInput.value = "";
+        userPhoneInput.value = "";
+        modal.classList.remove('modal-active');
+        document.body.classList.remove('main_hidden');
+    }
+    btnOpenModal.addEventListener('click', open);
+    btnOpenModalAbout.addEventListener('click', open);
+    btnClosedModal.addEventListener('click', exit);
+    btnsubmit.addEventListener('click', closed);
+    userPhoneInput.addEventListener('focus', _ => {
+        if(!/^\+\d*$/.test(userPhoneInput.value))
+            userPhoneInput.value = '+38';
+
+    });
+
+    userPhoneInput.addEventListener('keypress', e => {
+        if(!/\d/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+}
+catch (e){
+    console.log(e)
+}
+//telegram block start
+// https://api.telegram.org/bot7464222303:AAG0fN2rC0OavcTYES38BG34HNJ-dKY00Nc/getUpdates
+
+// const sendToTelegram = (data, customer, telephone) => {
+//     if(telephone.length > 5) {
+//         const token = '7464222303:AAG0fN2rC0OavcTYES38BG34HNJ-dKY00Nc';
+//         const chatId = '';
+//         const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=Имя ${customer}, телефон ${telephone}, раздел ${data}`;
+//         const xhttp = new XMLHttpRequest();
+//         xhttp.open('GET', url, true);
+//         xhttp.send();
+//     }
+// };
+
+//footer send block
+const inputNameFooter = document.getElementById('inputNameFooter');
+const inputTelFooter = document.getElementById('inputTelFooter');
+const inputCityFooter = document.getElementById('inputCityFooter')
+const inputBtnFooter = document.getElementById('inputBtnFooter');
+const sendFooterData = function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    sendToTelegram(inputCityFooter.value, inputNameFooter.value, inputTelFooter.value);
+    inputCityFooter.value = "";
+    inputNameFooter.value = "";
+    inputTelFooter.value = "";
+}
+inputTelFooter.addEventListener('focus', _ => {
+    if(!/^\+\d*$/.test(inputTelFooter.value))
+        inputTelFooter.value = '+38';
+});
+inputTelFooter.addEventListener('keypress', e => {
+    if(!/\d/.test(e.key)) {
+        e.preventDefault();
+    }
+});
+// inputBtnFooter.addEventListener('click', sendFooterData);

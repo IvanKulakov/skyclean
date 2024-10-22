@@ -503,18 +503,18 @@ catch (e){
     console.log(e)
 }
 //telegram block start
-// https://api.telegram.org/bot7464222303:AAG0fN2rC0OavcTYES38BG34HNJ-dKY00Nc/getUpdates
+// https://api.telegram.org/bot7616563724:AAFzWI_nremjyn3BRhSdBJsX3hzCsahb1Ho/getUpdates
 
-// const sendToTelegram = (data, customer, telephone) => {
-//     if(telephone.length > 5) {
-//         const token = '7464222303:AAG0fN2rC0OavcTYES38BG34HNJ-dKY00Nc';
-//         const chatId = '';
-//         const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=Имя ${customer}, телефон ${telephone}, раздел ${data}`;
-//         const xhttp = new XMLHttpRequest();
-//         xhttp.open('GET', url, true);
-//         xhttp.send();
-//     }
-// };
+const sendToTelegram = (data, customer, telephone) => {
+    if(telephone.length > 5) {
+        const token = '7616563724:AAFzWI_nremjyn3BRhSdBJsX3hzCsahb1Ho';
+        const chatId = '-4589004711';
+        const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=Ім'я ${customer}, телефон ${telephone}, місто ${data}`;
+        const xhttp = new XMLHttpRequest();
+        xhttp.open('GET', url, true);
+        xhttp.send();
+    }
+};
 
 //footer send block
 const inputNameFooter = document.getElementById('inputNameFooter');
@@ -538,4 +538,4 @@ inputTelFooter.addEventListener('keypress', e => {
         e.preventDefault();
     }
 });
-// inputBtnFooter.addEventListener('click', sendFooterData);
+inputBtnFooter.addEventListener('click', sendFooterData);
